@@ -86,13 +86,13 @@ docker run --network=mern --name mongodb -d -p 27017:27017 -v ~/opt/data:/data/d
 * Start the DB , mention the port and mount the volume for the DB for the data to get stored.
 * Create docker file for Backend and build backend docker image. 
 
-## How Docker compose can execute all the staps. 
+## How Docker compose can execute all the steps. 
 * So for the above steps we run different commands each for creating docker image and run different individual containers. Instead of running all the commands, we can do all of these in a single file, Docker compose
 * Instead of executing multiple commands, to create network, run frontend container, DB container, backend container, to avoild all these manual steps, we can write a single yaml file which is docker compose.yaml
 * Docker compose is used to run multiple containers and create a common network for all of them at a time. 
 
 
-Command to list the networks created
+**Command to list the networks created**
 ```
 docker network ls
 ```
@@ -104,6 +104,8 @@ docker-compose down                     /// to shutdown container
 ```
 
 Once the container starts, access the web page through browser - ec2instanceip:port
+
+Note:-  Allow the respective container ports in EC2 instance SG inbound rules
 
 
 
