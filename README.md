@@ -79,6 +79,39 @@ docker run --network=mern --name mongodb -d -p 27017:27017 -v ~/opt/data:/data/d
 * Mounting /opt/data to data/db : mounting  local folder to mongodb data to store the data 
 * port binding : binding container port 27017 to host port 27017 
 
+## All the  steps performed
+
+* A common bridge Network should be created for the containers to communicate with each other, and when starting/creating a container, bind that network to the containers so that all the containers can communicate with each other. 
+* Create a docker file for frontend and build frontend image. 
+* Start the DB , mention the port and mount the volume for the DB for the data to get stored.
+* Create docker file for Backend and build backend docker image. 
+
+## How Docker compose can execute all the staps. 
+* So for the above steps we run different commands each for creating docker image and run different individual containers. Instead of running all the commands, we can do all of these in a single file, Docker compose
+* Instead of executing multiple commands, to create network, run frontend container, DB container, backend container, to avoild all these manual steps, we can write a single yaml file which is docker compose.yaml
+* Docker compose is used to run multiple containers and create a common network for all of them at a time. 
+
+
+Command to list the networks created
+```
+docker network ls
+```
+
+## Command to run docker compose to start containers
+```
+docker compose up -d                       // -d detach mode
+docker-compose down                     /// to shutdown container
+```
+
+Once the container starts, access the web page through browser - ec2instanceip:port
+
+
+
+
+
+
+
+
 
 
 
