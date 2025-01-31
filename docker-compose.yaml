@@ -1,3 +1,9 @@
+
+# creating services for frontend , backend, and database
+# specifying the container configuration like network for the container, how to build the container, ports to expose/bind, environment variables, and dependencies.
+# The backend service depends on the mongodb service. The backend service will start only after the mongodb service is up and running.
+# We can use the already created image to run the container
+# We can also build the image using the Dockerfile and run the container using the image. So specifying backend code path. 
 services:
   backend:
     build: ./mern/backend
@@ -10,6 +16,7 @@ services:
     depends_on:
       - mongodb
 
+# The frontend service does not have any dependency. It will start as soon as the backend service is up and running.
   frontend:
     build: ./mern/frontend
     ports:
@@ -19,6 +26,8 @@ services:
     environment:
       REACT_APP_API_URL: http://backend:5050 
 
+# The mongodb service is created using the mongo image. The image is pulled from the Docker Hub. The service exposes the port 27017 to connect to the database.
+# mount the mongo-data to the db folder of mongo container
   mongodb:
     image: mongo:latest  
     ports:
@@ -28,10 +37,13 @@ services:
     volumes:
       - mongo-data:/data/db  
 
+# creating network and volume. Networks are created to connect the services and volumes are created to persist the data.
+# Network is created before the backend is created so that the backend can connect to the network.
 networks:
   mern_network:
     driver: bridge 
 
+# The volumes are created to persist the MongoDB data locally. The volume is created before the mongodb service is created so that the data is persisted even if the mongodb service is stopped or removed.
 volumes:
   mongo-data:
     driver: local  # Persist MongoDB data locally
