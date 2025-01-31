@@ -11,6 +11,8 @@ import cors from "cors";
 import recordRouter from "./routes/record.js";
 // import records from "./routes/record.js";
 
+const express = require('express');
+const cors = require('cors');
 const PORT = process.env.PORT || 5050;
 const app = express();
 // const express = require("express");

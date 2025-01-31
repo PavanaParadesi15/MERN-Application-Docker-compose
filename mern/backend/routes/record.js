@@ -22,7 +22,7 @@ router.get("/api/employees", async (req, res) => {
 });
 
 // This section will help you get a single record by id , particular record
-router.get("/:id", async (req, res) => {
+router.get("/api/employees:id", async (req, res) => {
   let collection = await db.collection("records");
   let query = { _id: new ObjectId(req.params.id) };
   let result = await collection.findOne(query);
@@ -32,7 +32,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // This section will help you create a new record and submit it to the database.
-router.post("/", async (req, res) => {
+router.post("/api/employees", async (req, res) => {
   try {
     let newDocument = {
       name: req.body.name,
@@ -49,7 +49,7 @@ router.post("/", async (req, res) => {
 });
 
 // This section will help you update a record by id.
-router.patch("/:id", async (req, res) => {
+router.patch("/api/employees:id", async (req, res) => {
   try {
     const query = { _id: new ObjectId(req.params.id) };
     const updates = {
@@ -70,7 +70,7 @@ router.patch("/:id", async (req, res) => {
 });
 
 // This section will help you delete a record
-router.delete("/:id", async (req, res) => {
+router.delete("/api/employees:id", async (req, res) => {
   try {
     const query = { _id: new ObjectId(req.params.id) };
 
