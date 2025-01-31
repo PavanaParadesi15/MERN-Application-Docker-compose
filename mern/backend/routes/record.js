@@ -11,11 +11,11 @@ import { ObjectId } from "mongodb";
 // router is an instance of the express router.
 // We use it to define our routes.
 // The router will be added as a middleware and will take control of requests starting with path /record.
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 // In the routes folder, we will define the routes for our application are supported.
 // This section will help you get a list of all the records.
-router.get("/", async (req, res) => {
+router.get("/api/employees", async (req, res) => {
   let collection = await db.collection("records");
   let results = await collection.find({}).toArray();
   res.send(results).status(200);
